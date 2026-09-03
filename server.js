@@ -114,9 +114,16 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Portfolio server running at http://localhost:${PORT}`);
-  if (!OPENAI_API_KEY) {
-    console.warn('Warning: OPENAI_API_KEY is not set. The chat widget will not work until you add it to .env.');
-  }
-});
+// Vercel imports this file as a serverless function and calls the exported
+// app directly, so app.listen() must only run for a traditional long-lived
+// server (local dev, Render, Railway, a VPS, etc).
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Portfolio server running at http://localhost:${PORT}`);
+    if (!OPENAI_API_KEY) {
+      console.warn('Warning: OPENAI_API_KEY is not set. The chat widget will not work until you add it to .env.');
+    }
+  });
+}
+
+module.exports = app;
