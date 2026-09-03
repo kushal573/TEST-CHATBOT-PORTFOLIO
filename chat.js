@@ -139,6 +139,9 @@
     { test: (t) => /^(hi|hello|hey|sup|yo)\b/.test(t), answer: () => `Hey! Ask me about my experience, skills, projects, education, or how to reach me.` },
     { test: (t) => /(who are you|are you\s.*\b(a\s+)?(bot|real|ai)\b|\bhuman\b)/.test(t), answer: () => `I'm a small script on ${firstName()}'s portfolio that matches your question to answers pulled straight from his résumé — not a language model, just quick lookups. For anything I can't answer, email works best.` },
     { test: (t) => /(introduce yourself|tell me about yourself|about yourself|who is kushal|your background|elevator pitch)/.test(t), answer: introduceSelf },
+    { test: (t) => /github/.test(t), answer: () => `My GitHub is ${resume.links.github}` },
+    { test: (t) => /linkedin/.test(t), answer: () => `My LinkedIn is ${resume.links.linkedin}` },
+    { test: (t) => /portfolio/.test(t), answer: () => `My portfolio website is ${resume.links.portfolio}` },
     { test: (t) => findCompany(t) !== undefined, answer: (t) => describeCompany(findCompany(t)) },
     { test: (t) => findProject(t) !== undefined, answer: (t) => {
         const p = findProject(t);
@@ -153,7 +156,7 @@
     { test: (t) => /(project|portfolio work|case stud)/.test(t), answer: listProjects },
     { test: (t) => /(education|degree|university|college|study|studied)/.test(t), answer: describeEducation },
     { test: (t) => /(recommend|reference|testimonial)/.test(t), answer: describeRecommendation },
-    { test: (t) => /(contact|email|phone|reach|hire|linkedin|github|available|opportunit)/.test(t), answer: describeContact },
+    { test: (t) => /(contact|email|phone|reach|hire|available|opportunit)/.test(t), answer: describeContact },
   ];
 
   function answer(userText) {
