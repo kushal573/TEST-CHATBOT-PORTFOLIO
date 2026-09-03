@@ -379,6 +379,20 @@ footer { padding: 30px 0 50px; }
 .chat-msg .chat-text { color: #d3d6dd; white-space: pre-wrap; }
 .chat-msg.error .chat-text { color: var(--fail); }
 .chat-msg.typing .chat-text { color: var(--text-faint); font-family: var(--mono); }
+.typing-dots { display: inline-flex; align-items: center; gap: 3px; }
+.typing-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  animation: typing-bounce 1.1s infinite ease-in-out;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
 
 .chat-input-row {
   display: flex;
