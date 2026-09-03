@@ -159,6 +159,7 @@
     { test: (t) => /^(hi|hello|hey|sup|yo)\b/.test(t), answer: () => `Hey! Ask me about my experience, skills, projects, education, or how to reach me.` },
     { test: (t) => /(who are you|are you\s.*\b(a\s+)?(bot|real|ai)\b|\bhuman\b)/.test(t), answer: () => `I'm a small script on ${firstName()}'s portfolio that matches your question to answers pulled straight from his résumé — not a language model, just quick lookups. For anything I can't answer, email works best.` },
     { test: (t) => /(your name|what.*(are|is) you call|who.*(are|is) you named|what should i call you)/.test(t), answer: () => `My name is ${resume.name}.` },
+    { test: (t) => /(what.*(do you do|you do).*(living|for a living)|what do you do\b|your profession|what.*you do for work|what.*your job)/.test(t), answer: () => `I'm a Software Engineer — specifically a ${resume.role}. My job is making sure the software actually meets what the client asked for, and that the quality is something people can trust and rely on, whether that's a chatbot, a mobile app, or an API. I do that through functional, API, integration, regression, and end-to-end testing, plus automation to keep every release reliable.` },
     { test: (t) => /(interest|hobby|hobbies|free time|outside of work|pastime|fun fact)/.test(t), answer: () => `Outside of coding and improving software quality, I like playing football in my free time, watching YouTube videos and learning new skills, swimming, listening to music, and traveling. But building new projects and leveling up software quality is still what I'm strongest and best at.` },
     { test: (t) => /(why.*(hire|should we|should i|pick|choose) you|why you)/.test(t), answer: () => `Honestly, just being myself: 3+ years of QA experience across four companies, growing from manual and web QA into mobile automation and now agentic AI, so I don't just find bugs — I understand how the product is actually built. I'm curious, I keep learning, I'm honest about what I know and don't, and I genuinely care about shipping quality software, not just passing tests. That combination — real experience plus who I am — is why I'd be a solid hire.` },
     { test: (t) => /(value.*(add|bring|contribut)|what.*(did you|have you) (add|bring|contribut))/.test(t), answer: () => `I added value beyond just testing — my strong communication skills meant I could bridge devs, product, and stakeholders, catching gaps early instead of after release. I raised clear, well-documented bugs, pushed for better test coverage and process, and was proactive about learning the product deeply so my feedback was actually useful. On the agentic AI side, that same clarity helped the team reason about prompts, guardrails, and edge cases that are easy to miss. Overall, I made quality everyone's responsibility, not just QA's.` },
@@ -202,7 +203,7 @@
     for (const intent of INTENTS) {
       if (intent.test(t)) return intent.answer(t);
     }
-    return `I am not trained for this for right now. Try asking about my experience, skills, projects, or education — or email me directly at ${resume.email}.`;
+    return `I'm not trained on that yet. Try asking about my experience, skills, projects, or education — or email me directly at ${resume.email}.`;
   }
 
   form.addEventListener('submit', (e) => {
