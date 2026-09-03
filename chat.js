@@ -78,7 +78,12 @@
     const lines = resume.experience.map(
       (e) => `${e.title} at ${e.company} (${e.dates})`
     );
-    return `I've spent three years across four companies: ${lines.join('; ')}. Ask me about any one of these by name and I'll go deeper.`;
+    return `I've spent 3+ years across four companies: ${lines.join('; ')}. Ask me about any one of these by name and I'll go deeper.`;
+  }
+
+  function introduceSelf() {
+    const current = resume.experience[0];
+    return `Hi, I'm ${resume.name}, a ${resume.role} based in ${resume.location}. ${resume.summary} Right now I'm ${current.title} at ${current.company}. Ask me about my experience, skills, projects, or education for more.`;
   }
 
   function findCompany(text) {
@@ -133,6 +138,7 @@
   const INTENTS = [
     { test: (t) => /^(hi|hello|hey|sup|yo)\b/.test(t), answer: () => `Hey! Ask me about my experience, skills, projects, education, or how to reach me.` },
     { test: (t) => /(who are you|are you\s.*\b(a\s+)?(bot|real|ai)\b|\bhuman\b)/.test(t), answer: () => `I'm a small script on ${firstName()}'s portfolio that matches your question to answers pulled straight from his résumé — not a language model, just quick lookups. For anything I can't answer, email works best.` },
+    { test: (t) => /(introduce yourself|tell me about yourself|about yourself|who is kushal|your background|elevator pitch)/.test(t), answer: introduceSelf },
     { test: (t) => findCompany(t) !== undefined, answer: (t) => describeCompany(findCompany(t)) },
     { test: (t) => findProject(t) !== undefined, answer: (t) => {
         const p = findProject(t);
