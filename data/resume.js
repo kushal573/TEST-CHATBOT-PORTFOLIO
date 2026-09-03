@@ -8,9 +8,9 @@ module.exports = {
   phone: '+977-9860759186',
   email: 'kushalniraula41@gmail.com',
   links: {
-    portfolio: '#',
-    linkedin: '#',
-    github: '#',
+    portfolio: 'https://www.niraulakushal.com.np/',
+    linkedin: 'https://www.linkedin.com/in/kushal-niraula-368594287/',
+    github: 'https://github.com/kushal410',
   },
 
   summary: `Senior QA Engineer with three years across four companies, moving from manual and
